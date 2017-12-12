@@ -171,6 +171,17 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
                           titleForHeaderInSection section: Int) -> String? {
         return sections[section]
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+       
+        if (segue.identifier == "sellerProfileSegue") {
+            let controller = segue.destination as! ProfileViewController
+            controller.personInformation = self.sellerText!
+            
+            // self.items!.forEach { print($1) }
+          
+        }
+    }
     /*
      // MARK: - Navigation
      

@@ -1,4 +1,4 @@
-//
+// listings
 //  ListingsViewController.swift
 //  Marketplace
 //
@@ -27,9 +27,6 @@ class ListingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     // If using filters
     var userItems: [String: Any] = [:]
-    
-    
-    
     
     @IBAction func addFilter(_ sender: UIButton) {
         if (sender.backgroundColor == UIColor.green) {
@@ -87,6 +84,7 @@ class ListingsViewController: UIViewController, UITableViewDelegate, UITableView
         activeFilters = newFilters
         print(activeFilters)
         viewDidLoad()
+        
         //        DispatchQueue.main.async{
         //            self.tableView.reloadData()
         //
@@ -121,6 +119,8 @@ class ListingsViewController: UIViewController, UITableViewDelegate, UITableView
                     //print(self.items)
                     print("no filter")
                 } else {
+                    self.items = userName["items"] as? [String: Any]
+                    self.userItems.removeAll()
                     // Looping through all the items
                     for (key, value) in self.items! {
                         let category = value as? [String:Any]
@@ -131,11 +131,11 @@ class ListingsViewController: UIViewController, UITableViewDelegate, UITableView
                             self.userItems[key] = value
                         }
                     }
-                    // set items = userItems
+                    
                     self.items = self.userItems
-                    self.itemCount = (self.items?.count)!
-                    // DOES print
-                    print(self.items)
+                    self.itemCount = self.items!.count
+                    print("the filtered items are: \(String(describing: self.items))")
+                    
                 }
             }
             
@@ -162,17 +162,13 @@ class ListingsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: "cell")
-        
-        print("KEYS: \(indexPath.row)")
         var iter = items!.keys.makeIterator()
         var next:String = ""
         
         for _ in 0 ... indexPath.row {
             next = iter.next()!
         }
-        
         descriptions = self.items![next] as? [String:Any]
         //print(descriptions!["title"]! as? String)
         cell.textLabel!.text = descriptions!["title"]! as? String

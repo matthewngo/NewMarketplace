@@ -23,6 +23,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     var allItems: [String:Any] = [:]
     var allIDs : [String:Any] = [:]
     var ID: [String] = []
+    var personInformation: String = ""
     
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var classYear: UILabel!
@@ -36,7 +37,14 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         ref = Database.database().reference()
         ref?.observeSingleEvent(of: .value, with: { snapshot in
             if !snapshot.exists() { return }
-            self.currentUser = self.appDelegate.globalEmail
+            
+            if (self.personInformation == "") {
+                self.currentUser = self.appDelegate.globalEmail
+            } else {
+                self.currentUser = self.personInformation
+            }
+
+            
             if let userName = snapshot.value as? [String:Any] {
                 if (userName["items"] != nil) {
                     self.items = userName["items"] as? [String: Any]
@@ -50,7 +58,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
                         if (key == self.currentUser) {
                             var value = value as? [String:Any]
                             self.allItems[key] = value
-                            let hold = (self.allItems[self.appDelegate.globalEmail] as? [String:Any])!
+                            let hold = (self.allItems[self.currentUser] as? [String:Any])!
                             if (hold["items"] != nil) {
                             self.allIDs = hold["items"]! as! [String:Any]
                             self.ID = Array(self.allIDs.keys)
