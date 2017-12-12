@@ -929,6 +929,9 @@
                                 <state key="normal" title="Message Seller">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="messageSellerPressed:" destination="ajO-Bi-Ovk" eventType="touchUpInside" id="oHe-PZ-nPK"/>
+                                </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="aCP-Kb-1iv">
                                 <rect key="frame" x="0.0" y="415.5" width="375" height="202.5"/>

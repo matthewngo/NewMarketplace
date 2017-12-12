@@ -9,8 +9,9 @@
 import UIKit
 import Firebase
 import FirebaseStorage
+import MessageUI
 
-class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, MFMailComposeViewControllerDelegate {
     var id: String = ""
     var itemDescription: NSDictionary = [:]
     var ref: DatabaseReference?
@@ -111,6 +112,24 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 // handle error
             }
         }
+    }
+    
+    @IBAction func messageSellerPressed(_ sender: Any) {
+        if !MFMailComposeViewController.canSendMail() {
+            // will always return false on simulator, have to do email testing on live device
+            print("Mail services are not available")
+            return
+        } else {
+            let mf = MFMailComposeViewController()
+            mf.setToRecipients(["\(sellerText)@uw.edu"])
+            mf.setSubject("Listing for \(titleText)")
+            mf.mailComposeDelegate = self
+            self.present(mf, animated: true, completion: nil)
+        }
+    }
+    
+    public func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true, completion: nil)
     }
     
     override func didReceiveMemoryWarning() {
