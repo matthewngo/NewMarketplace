@@ -25,6 +25,12 @@ class ListingsViewController: UIViewController, UITableViewDelegate, UITableView
     var otherFilter: Bool = false
     var activeFilters: [String] = []
     
+    // If using filters
+    var userItems: [String: Any] = [:]
+    
+    
+    
+    
     @IBAction func addFilter(_ sender: UIButton) {
         if (sender.backgroundColor == UIColor.green) {
             sender.backgroundColor = UIColor.clear
@@ -79,30 +85,61 @@ class ListingsViewController: UIViewController, UITableViewDelegate, UITableView
             newFilters.append("Other")
         }
         activeFilters = newFilters
+        print(activeFilters)
+        viewDidLoad()
+        //        DispatchQueue.main.async{
+        //            self.tableView.reloadData()
+        //
+        //        }
+        
     }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("reloading")
         ref = Database.database().reference()
         ref?.observeSingleEvent(of: .value, with: { snapshot in
-            
             if !snapshot.exists() { return } // not necessary
-            
             //print(snapshot)
-            
             if let userName = snapshot.value as? [String:Any] {
                 self.items = userName["items"] as? [String: Any]
                 //print(self.items!.count)
-                if(self.items == nil) {
-                    self.itemCount = 0
-                } else {
+                //                if(self.items == nil) {
+                //                    self.itemCount = 0
+                //                } else {
+                //                    self.itemCount = self.items!.count
+                //                    for key in self.items!.keys {
+                //                        self.descriptions = self.items![key] as? [String:Any]
+                //                    }
+                //                }
+                if (self.activeFilters.count == 0) {
                     self.itemCount = self.items!.count
                     for key in self.items!.keys {
                         self.descriptions = self.items![key] as? [String:Any]
                     }
+                    //print(self.items)
+                    print("no filter")
+                } else {
+                    // Looping through all the items
+                    for (key, value) in self.items! {
+                        let category = value as? [String:Any]
+                        let c = category!["category"]
+                        // Checks if the item contains the category in the activeFilters
+                        if let i = self.activeFilters.index(of: c as! String) {
+                            // appends them to user items
+                            self.userItems[key] = value
+                        }
+                    }
+                    // set items = userItems
+                    self.items = self.userItems
+                    self.itemCount = (self.items?.count)!
+                    // DOES print
+                    print(self.items)
                 }
             }
             
+            self.tableView.reloadData()
             // can also use
             // snapshot.childSnapshotForPath("full_name").value as! String
         })
@@ -125,13 +162,18 @@ class ListingsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: "cell")
+        
+        print("KEYS: \(indexPath.row)")
         var iter = items!.keys.makeIterator()
         var next:String = ""
+        
         for _ in 0 ... indexPath.row {
             next = iter.next()!
         }
-        descriptions = items![next] as? [String:Any]
+        
+        descriptions = self.items![next] as? [String:Any]
         //print(descriptions!["title"]! as? String)
         cell.textLabel!.text = descriptions!["title"]! as? String
         let details: String = (descriptions!["price"]! as? String)!
@@ -170,10 +212,10 @@ class ListingsViewController: UIViewController, UITableViewDelegate, UITableView
         if (segue.identifier == "itemView") {
             let controller = segue.destination as! ItemViewController
             let currentPath = self.tableView.indexPathForSelectedRow!
-            print("selected index: \(currentPath[1])")
+            
             // self.items!.forEach { print($1) }
             selectedItem = getItem(path:currentPath[1])
-            print(selectedItem)
+            
             controller.itemDescription = selectedItem
         }
     }
