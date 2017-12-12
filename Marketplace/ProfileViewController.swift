@@ -32,34 +32,39 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.reloadData()
         ref = Database.database().reference()
         ref?.observeSingleEvent(of: .value, with: { snapshot in
             if !snapshot.exists() { return }
             self.currentUser = self.appDelegate.globalEmail
             if let userName = snapshot.value as? [String:Any] {
-                self.items = userName["items"] as? [String: Any]
-                self.itemCount = self.items!.count
-                self.profiles = userName["profiles"] as? [String:Any]
-                for key in self.items!.keys {
-                    self.descriptions = self.items![key] as? [String:Any]
-                }
-                // Search for the profile, set allItems to profile->, email->, items(key, value)
-                for (key, value) in self.profiles! {
-                    if (key == self.currentUser) {
-                        var value = value as? [String:Any]
-                        self.allItems[key] = value
-                        let hold = (self.allItems[self.appDelegate.globalEmail] as? [String:Any])!
-                        self.allIDs = hold["items"]! as! [String:Any]
-                        self.ID = Array(self.allIDs.keys)
+                if (userName["items"] != nil) {
+                    self.items = userName["items"] as? [String: Any]
+                    self.itemCount = self.items!.count
+                    self.profiles = userName["profiles"] as? [String:Any]
+                    for key in self.items!.keys {
+                        self.descriptions = self.items![key] as? [String:Any]
                     }
-                }
-                
-                for (key, value) in self.items! {
-                    if let i = self.ID.index(of: key) {
-                        self.userItems[key] = value
+                    // Search for the profile, set allItems to profile->, email->, items(key, value)
+                    for (key, value) in self.profiles! {
+                        if (key == self.currentUser) {
+                            var value = value as? [String:Any]
+                            self.allItems[key] = value
+                            let hold = (self.allItems[self.appDelegate.globalEmail] as? [String:Any])!
+                            if (hold["items"] != nil) {
+                            self.allIDs = hold["items"]! as! [String:Any]
+                            self.ID = Array(self.allIDs.keys)
+                            }
+                        }
                     }
-                }
-                // Do any additional setup after loading the view.
+                    if (self.ID.count > 0) {
+                        for (key, value) in self.items! {
+                            if let i = self.ID.index(of: key) {
+                                self.userItems[key] = value
+                            }
+                        }
+                    }
+                }  // Do any additional setup after loading the view.
             }
         })
         ref?.child("profiles").child(appDelegate.globalEmail).observeSingleEvent(of: .value, with: { (snapshot) in
