@@ -79,6 +79,8 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
             addContent()
         }
     }
+    
+    
     // this function sets all of the different elements on the page such as text labels with the firebase data
     func addContent() {
         if imgUrl != ""  {

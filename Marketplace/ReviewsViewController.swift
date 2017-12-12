@@ -14,11 +14,14 @@ class ReviewsViewController: UIViewController, UITableViewDelegate, UITableViewD
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     @IBOutlet weak var avgRating: UILabel!
     var seller: String?
+    @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         seller = appDelegate.globalEmail
         calcAvg()
+        tableView.delegate = self
+        tableView.dataSource = self
         // Do any additional setup after loading the view.
     }
 
@@ -41,12 +44,25 @@ class ReviewsViewController: UIViewController, UITableViewDelegate, UITableViewD
                 print(avg)
             }
             print(avg)
+            avg = avg / Double(value!.count)
             self.avgRating.text = "\(avg)"
+            Database.database().reference().child("profiles").child(self.seller!).child("avgRating").setValue(avg)
         } ) { (error) in
             //print(error.localizedDescription)
         }
     }
 
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: "cell")
+        
+        return cell
+    }
+    
+    
     /*
     // MARK: - Navigation
 

@@ -152,6 +152,7 @@
                     <navigationItem key="navigationItem" title="Reviews" id="SzQ-wD-O5X"/>
                     <connections>
                         <outlet property="avgRating" destination="YwV-xd-l52" id="tCy-Hc-TgE"/>
+                        <outlet property="tableView" destination="6hK-4J-XNW" id="G1P-7m-nOg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HcF-Zv-4iB" userLabel="First Responder" sceneMemberID="firstResponder"/>
