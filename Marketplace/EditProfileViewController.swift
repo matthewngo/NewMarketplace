@@ -21,15 +21,16 @@ class EditProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         ref = Database.database().reference()
+        // find all of the information for a specific profile
         ref?.child("profiles").child(appDelegate.globalEmail).observeSingleEvent(of: .value, with: { (snapshot) in
             let value = snapshot.value as? NSDictionary
-            if value!["name"] != nil {
+            if value!["name"] != nil { // user has edited info or entered name before
                 self.nameField.text = value!["name"] as? String
             }
-            if value!["classYear"] != nil {
+            if value!["classYear"] != nil { // user has edited info or entered class name before
                 self.classField.text = value!["classYear"] as? String
             }
-            if value!["about"] != nil {
+            if value!["about"] != nil { // user has edited info or entered about info before
                 self.aboutField.text = value!["about"] as? String
             }
         }) { (error) in
@@ -48,6 +49,7 @@ class EditProfileViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // if submit btn is pressed, save all of the profile information to firebase
         let name = nameField.text
         let classYear = classField.text
         let about = aboutField.text

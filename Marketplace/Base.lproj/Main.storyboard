@@ -930,16 +930,17 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Dws-nV-6uw" userLabel="Seller Stack View">
-                                <rect key="frame" x="39" y="310.5" width="176" height="25"/>
+                                <rect key="frame" x="39" y="310.5" width="182" height="25"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Igv-0O-srN">
-                                        <rect key="frame" x="0.0" y="0.0" width="33" height="25"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eKb-bE-GfC">
+                                        <rect key="frame" x="0.0" y="0.0" width="39" height="25"/>
+                                        <state key="normal" title="Seller"/>
+                                        <connections>
+                                            <segue destination="ghz-iE-ip7" kind="show" identifier="sellerProfileSegue" id="Asi-Ud-4Y8"/>
+                                        </connections>
+                                    </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="n4Q-Xy-XT6" userLabel="Star Stack View">
-                                        <rect key="frame" x="43" y="0.0" width="133" height="25"/>
+                                        <rect key="frame" x="49" y="0.0" width="133" height="25"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Star - Filled In" translatesAutoresizingMaskIntoConstraints="NO" id="5Wz-uR-ZP6">
                                                 <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
@@ -1010,8 +1011,8 @@
                         <outlet property="itemImg" destination="osW-Gw-UMu" id="Siu-p6-u0L"/>
                         <outlet property="navTitle" destination="Wnt-FI-LlV" id="r9M-Vt-n3o"/>
                         <outlet property="price" destination="E9g-Oh-In4" id="5Gd-jS-5VJ"/>
-                        <outlet property="seller" destination="Igv-0O-srN" id="0K7-ZS-2RJ"/>
                         <outlet property="sellerBtn" destination="MSR-nC-iEj" id="OHG-5L-hif"/>
+                        <outlet property="sellerName" destination="eKb-bE-GfC" id="d5D-EK-0BE"/>
                         <outlet property="tableView" destination="aCP-Kb-1iv" id="2NA-1S-jvd"/>
                     </connections>
                 </viewController>
@@ -1049,5 +1050,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="BAD-hD-8xI"/>
+        <segue reference="Asi-Ud-4Y8"/>
     </inferredMetricsTieBreakers>
 </document>

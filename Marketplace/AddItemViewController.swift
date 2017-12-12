@@ -62,7 +62,6 @@ class AddItemViewController: UITableViewController,UIImagePickerControllerDelega
     @IBAction func submitBtnPressed(_ sender: Any) {
         ref = Database.database().reference()
         let itemsRef = Database.database().reference(withPath: "items")
-        
         var on = true
         if bestOfferSwitch.isOn {
             on = true
@@ -99,9 +98,20 @@ class AddItemViewController: UITableViewController,UIImagePickerControllerDelega
             let profileItemsRef = profileRef.child(appDelegate.globalEmail).child("items")
             profileItemsRef.child(id).setValue(titleField.text)
             self.performSegue(withIdentifier: "submitSegue", sender: self)
+            clearFields()
         }
     }
-
+    
+    func clearFields() {
+        let image = UIImage(named: "Camera") as UIImage?
+        itemImage.setImage(image, for: UIControlState.normal)
+        titleField.text = ""
+        commentField.text = ""
+        price.text = ""
+        descriptionField.text = ""
+        bestOfferSwitch.setOn(false, animated: false)
+        
+    }
     func checkCondition() {
         switch segmentedControl.selectedSegmentIndex {
         case 0:

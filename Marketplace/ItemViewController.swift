@@ -22,8 +22,8 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var fullTitle: UILabel!
     @IBOutlet weak var price: UILabel!
     @IBOutlet weak var bestOfferLabel: UILabel!
-    @IBOutlet weak var seller: UILabel!
     @IBOutlet weak var sellerBtn: UIButton!
+    @IBOutlet weak var sellerName: UIButton!
     
     var titleText: String?
     var priceText: String?
@@ -39,10 +39,12 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
+        // having an id means that it is coming from the add item or profile pages
         if id != "" {
             print(id)
             ref = Database.database().reference()
             //print(ref?.child("items").child(id))
+            // searching Firebase for item id and then getting all of the info for that item
             ref?.child("items").child(id).observeSingleEvent(of: .value, with: { (snapshot) in
                 // Get user value
                 print("testing")
@@ -62,7 +64,7 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
             }) { (error) in
                 print(error.localizedDescription)
             }
-        } else {
+        } else { // coming from item listings page
             titleText = itemDescription["title"] as? String
             self.priceText = itemDescription["price"] as? String
             self.imgUrl = (itemDescription["imageURL"] as? String)!
@@ -75,7 +77,7 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
             addContent()
         }
     }
-    
+    // this function sets all of the different elements on the page such as text labels with the firebase data
     func addContent() {
         if imgUrl != ""  {
             downloadImage(url: (imgUrl)) // compressing image, still need to fix
@@ -92,10 +94,11 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
         } else {
             bestOfferLabel.isHidden = false
         }
-        seller.text = sellerText
+        sellerName.setTitle(sellerText, for: .normal)
         sellerBtn.layer.cornerRadius = 7
         sellerBtn.contentEdgeInsets = UIEdgeInsetsMake(6, 10, 6, 10) // top, left, bottom, right
     }
+    // downloading the image stored in firebase using the url added for each item
     public func downloadImage(url: String) {
         let imgUrl = URL(string: url)
         DispatchQueue.main.async {
@@ -108,17 +111,8 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 // handle error
             }
         }
-        /*
-         URLSession.shared.dataTask(with:imgUrl!, completionHandler: {(data, response, error) in
-         guard let data = data, error == nil else { return }
-         do {
-         self.itemImg.image = UIImage(data: data)
-         } catch let error as NSError {
-         print(error)
-         }
-         }).resume()*/
-        
     }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -141,32 +135,32 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
             ref = Database.database().reference()
             ref?.child("items").child(id).observeSingleEvent(of: .value, with: { (snapshot) in
                 let value = snapshot.value as? NSDictionary
-                if indexPath.section == 0 {
+                if indexPath.section == 0 { // condition section
                     cell?.textLabel?.text =  value!["condition"] as? String
-                    if value!["conditionComment"] as? String != ""  {
+                    if value!["conditionComment"] as? String != ""  { // if user gave a condition comment
                         cell?.detailTextLabel?.numberOfLines = 0;
                         cell?.detailTextLabel?.text = "Comment: \((value!["conditionComment"] as? String)!)"
                     }
-                } else if indexPath.section == 1 {
+                } else if indexPath.section == 1 { // description section
                     cell?.textLabel?.numberOfLines = 0;
                     cell?.textLabel?.text = value!["description"] as? String
-                } else {
+                } else { // category section
                     cell?.textLabel?.text = value!["category"] as? String
                 }
             }) { (error) in
                 print(error.localizedDescription)
             }
        } else {
-           if indexPath.section == 0 {
+           if indexPath.section == 0 { // condition section
                cell?.textLabel?.text = condition
                if conComment != ""  {
                 cell?.detailTextLabel?.numberOfLines = 0;
-                cell?.detailTextLabel?.text = "Comment: \(conComment)"
+                cell?.detailTextLabel?.text = "Comment: \(conComment!)"
               }
-           } else if indexPath.section == 1 {
+           } else if indexPath.section == 1 { // description section
                 cell?.textLabel?.numberOfLines = 0;
                 cell?.textLabel?.text = desc
-            } else {
+            } else { // category section
                 cell?.textLabel?.text = cat
             }
         }
