@@ -63,6 +63,7 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 self.conComment = value!["conditionComment"] as? String
                 self.sellerText = value!["seller"] as? String
                 self.addContent()
+                self.getRating()
             }) { (error) in
                 print(error.localizedDescription)
             }
@@ -77,10 +78,24 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
             self.conComment = itemDescription["conditionComment"] as? String
             self.sellerText = itemDescription["seller"] as? String
             addContent()
+            self.getRating()
         }
     }
     
-    
+    func getRating() {
+       ref = Database.database().reference()
+        ref?.child("profiles").child(sellerText!).observeSingleEvent(of: .value, with: { (snapshot) in
+            // Get user value
+            let value = snapshot.value as? NSDictionary
+            if snapshot.hasChild("avgRating") {
+                self.rating.text = "\((value!["avgRating"])!)"
+            } else {
+                self.rating.text = "No Reviews Yet"
+            }
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+    }
     // this function sets all of the different elements on the page such as text labels with the firebase data
     func addContent() {
         if imgUrl != ""  {
