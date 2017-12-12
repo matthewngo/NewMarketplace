@@ -149,13 +149,20 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ppl-QF-7Kw"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Reviews" id="SzQ-wD-O5X"/>
+                    <navigationItem key="navigationItem" title="Reviews" id="SzQ-wD-O5X">
+                        <barButtonItem key="leftBarButtonItem" title="Log Out" id="zOq-iD-G5E">
+                            <connections>
+                                <segue destination="Wzi-Jl-gx9" kind="unwind" unwindAction="unwindToLoginWithSegue:" id="4vD-n8-Peb"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="avgRating" destination="YwV-xd-l52" id="tCy-Hc-TgE"/>
                         <outlet property="tableView" destination="6hK-4J-XNW" id="G1P-7m-nOg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HcF-Zv-4iB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Wzi-Jl-gx9" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="816.79999999999995" y="-23.838080959520241"/>
         </scene>
@@ -471,6 +478,11 @@
                         <viewLayoutGuide key="safeArea" id="DC6-bb-CES"/>
                     </view>
                     <navigationItem key="navigationItem" title="Listings" id="mQF-B8-G03">
+                        <barButtonItem key="leftBarButtonItem" title="Log Out" id="oXd-uW-HXk">
+                            <connections>
+                                <segue destination="TYd-V1-IK3" kind="unwind" unwindAction="unwindToLoginWithSegue:" id="Qtj-hV-dG6"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Y0O-1T-O34">
                             <connections>
                                 <segue destination="Ziq-Dg-xtv" kind="show" id="6f2-6S-p7U"/>
@@ -483,6 +495,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ioa-Yz-WC6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="TYd-V1-IK3" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="816.79999999999995" y="-690.40479760119945"/>
         </scene>
@@ -952,6 +965,11 @@
                         <viewLayoutGuide key="safeArea" id="A5e-lO-11P"/>
                     </view>
                     <navigationItem key="navigationItem" title="Profile" id="1JT-GY-lcU">
+                        <barButtonItem key="leftBarButtonItem" title="Log Out" id="IMN-cI-urO">
+                            <connections>
+                                <segue destination="ecx-sW-iIf" kind="unwind" unwindAction="unwindToLoginWithSegue:" id="0AM-FJ-wnq"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="edit" id="joJ-qZ-5Tm">
                             <connections>
                                 <segue destination="IEw-mX-I3W" kind="show" id="FFj-wF-yvN"/>
@@ -969,6 +987,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2yO-sz-oTZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="ecx-sW-iIf" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="817" y="716"/>
         </scene>
