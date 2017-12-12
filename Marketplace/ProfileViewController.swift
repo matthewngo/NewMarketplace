@@ -212,10 +212,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
    
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: "yourItemView", sender:self)
-    }
-   
+ 
     
     
     /*
