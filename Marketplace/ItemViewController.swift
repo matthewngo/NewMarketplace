@@ -86,7 +86,7 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
         navTitle.title = titleText
         fullTitle.text = titleText
-        price.text = "$\(priceText)"
+        price.text = "$\(priceText!)"
         if !bestOffer! {
             bestOfferLabel.isHidden = true
         } else {
@@ -145,7 +145,7 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
                     cell?.textLabel?.text =  value!["condition"] as? String
                     if value!["conditionComment"] as? String != ""  {
                         cell?.detailTextLabel?.numberOfLines = 0;
-                        cell?.detailTextLabel?.text = "Comment: \(value!["conditionComment"] as? String)"
+                        cell?.detailTextLabel?.text = "Comment: \((value!["conditionComment"] as? String)!)"
                     }
                 } else if indexPath.section == 1 {
                     cell?.textLabel?.numberOfLines = 0;
