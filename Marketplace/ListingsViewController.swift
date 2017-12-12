@@ -29,8 +29,8 @@ class ListingsViewController: UIViewController, UITableViewDelegate, UITableView
     var userItems: [String: Any] = [:]
     
     @IBAction func addFilter(_ sender: UIButton) {
-        if (sender.backgroundColor == UIColor.green) {
-            sender.backgroundColor = UIColor.clear
+        if (sender.backgroundColor == UIColor(red: 0.2941, green: 0.1804, blue: 0.5137, alpha: 1.0)) {
+            sender.backgroundColor = UIColor(hue: 0.5639, saturation: 0.07, brightness: 0.65, alpha: 1.0)
             let title = sender.titleLabel?.text
             if title == "Books" {
                 bookFilter = false
@@ -46,7 +46,7 @@ class ListingsViewController: UIViewController, UITableViewDelegate, UITableView
                 otherFilter = false
             }
         } else {
-            sender.backgroundColor = UIColor.green
+            sender.backgroundColor = UIColor(red: 0.2941, green: 0.1804, blue: 0.5137, alpha: 1.0)
             let title = sender.titleLabel?.text
             if title == "Books" {
                 bookFilter = true
@@ -148,6 +148,7 @@ class ListingsViewController: UIViewController, UITableViewDelegate, UITableView
         // Do any additional setup after loading the view.
     }
     
+    
     // Workaround for ViewDidLoad after TableView
     override func viewDidAppear(_ animated: Bool) {
         tableView.reloadData()
@@ -156,6 +157,7 @@ class ListingsViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return itemCount
     }
+    
     
     @IBAction func unwindToListings(segue:UIStoryboardSegue) {
         NSLog("Listings")

@@ -182,42 +182,60 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uae-vX-Koh">
                                         <rect key="frame" x="0.0" y="0.0" width="56.5" height="30"/>
-                                        <state key="normal" title="Books"/>
+                                        <color key="backgroundColor" red="0.59999999999999998" green="0.63137254901960782" blue="0.65098039215686276" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Books">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
                                         <connections>
                                             <action selector="addFilter:" destination="3WV-YD-Rei" eventType="touchUpInside" id="9Ro-Yu-lvl"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uIG-jD-7fe">
                                         <rect key="frame" x="56.5" y="0.0" width="76" height="30"/>
-                                        <state key="normal" title="Clothing"/>
+                                        <color key="backgroundColor" red="0.59999999999999998" green="0.63137254899999995" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Clothing">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
                                         <connections>
                                             <action selector="addFilter:" destination="3WV-YD-Rei" eventType="touchUpInside" id="yrZ-fo-5RG"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e21-a8-VBp">
                                         <rect key="frame" x="132.5" y="0.0" width="81" height="30"/>
-                                        <state key="normal" title="Furniture"/>
+                                        <color key="backgroundColor" red="0.59999999999999998" green="0.63137254899999995" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Furniture">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
                                         <connections>
                                             <action selector="addFilter:" destination="3WV-YD-Rei" eventType="touchUpInside" id="A9z-2t-KZj"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NTM-e7-4qp">
                                         <rect key="frame" x="213.5" y="0.0" width="43.5" height="30"/>
-                                        <state key="normal" title="Tech"/>
+                                        <color key="backgroundColor" red="0.59999999999999998" green="0.63137254899999995" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Tech">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
                                         <connections>
                                             <action selector="addFilter:" destination="3WV-YD-Rei" eventType="touchUpInside" id="D0i-RB-gbs"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yhf-GN-Xzn">
                                         <rect key="frame" x="257" y="0.0" width="65.5" height="30"/>
-                                        <state key="normal" title="Tickets"/>
+                                        <color key="backgroundColor" red="0.59999999999999998" green="0.63137254899999995" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Tickets">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
                                         <connections>
                                             <action selector="addFilter:" destination="3WV-YD-Rei" eventType="touchUpInside" id="rIM-Qu-aN5"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ehr-jX-cmT">
                                         <rect key="frame" x="322.5" y="0.0" width="52.5" height="30"/>
-                                        <state key="normal" title="Other"/>
+                                        <color key="backgroundColor" red="0.59999999999999998" green="0.63137254899999995" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Other">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
                                         <connections>
                                             <action selector="addFilter:" destination="3WV-YD-Rei" eventType="touchUpInside" id="qid-k9-DOc"/>
                                         </connections>
