@@ -30,6 +30,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var about: UILabel!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var profileImg: UIImageView!
+    @IBOutlet weak var reviewButton: UIButton!
     
     @IBOutlet weak var editBtn: UIBarButtonItem!
     override func viewDidLoad() {
@@ -37,8 +38,10 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         tableView.reloadData()
         ref = Database.database().reference()
         if (self.personInformation == "") {
+            self.reviewButton.isHidden = true
             self.currentUser = self.appDelegate.globalEmail
         } else {
+            self.reviewButton.isHidden = false
             self.currentUser = self.personInformation
         }
         ref?.observeSingleEvent(of: .value, with: { snapshot in

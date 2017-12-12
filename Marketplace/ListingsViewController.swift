@@ -34,7 +34,7 @@ class ListingsViewController: UIViewController, UITableViewDelegate, UITableView
             let title = sender.titleLabel?.text
             if title == "Books" {
                 bookFilter = false
-            } else if title == "Clothes" {
+            } else if title == "Clothing" {
                 clothesFilter = false
             } else if title == "Furniture" {
                 furnFilter = false
@@ -50,7 +50,7 @@ class ListingsViewController: UIViewController, UITableViewDelegate, UITableView
             let title = sender.titleLabel?.text
             if title == "Books" {
                 bookFilter = true
-            } else if title == "Clothes" {
+            } else if title == "Clothing" {
                 clothesFilter = true
             } else if title == "Furniture" {
                 furnFilter = true
@@ -67,7 +67,7 @@ class ListingsViewController: UIViewController, UITableViewDelegate, UITableView
             newFilters.append("Books")
         }
         if clothesFilter {
-            newFilters.append("Clothing")
+            newFilters.append("Clothes")
         }
         if furnFilter {
             newFilters.append("Furniture")

@@ -24,17 +24,38 @@ class ReviewSellerTableViewController: UITableViewController {
     }
 
     @IBAction func submitBtnPressed(_ sender: Any) {
+        if(self.appDelegate.globalEmail != self.seller) {
+            ref = Database.database().reference().child("profiles")
+            ref = ref?.child(self.seller!)
+            ref?.child("profiles").child(self.seller!).observeSingleEvent(of: .value, with: { (snapshot) in
+                let value = snapshot.value as? NSDictionary
+                let reviewsRef = self.ref?.child("profiles").child(self.seller!).child("reviews")
+                let reviewRef = reviewsRef?.childByAutoId()
+                let rating = self.ratingField.text
+                reviewRef?.child("rating").setValue(rating)
+                let comment = self.commentField.text
+                reviewRef?.child("comment").setValue(comment)
+                let product = self.itemField.text
+                reviewRef?.child("product").setValue(product)
+                let reviewer = self.appDelegate.globalEmail
+                reviewRef?.child("reviewer").setValue(reviewer)
+            } ) { (error) in
+                //print(error.localizedDescription)
+            }
+        } else {
+            print("You can't review yourself!")
+        }
  
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if(self.appDelegate.globalEmail != self.seller) {
+        if (self.appDelegate.globalEmail != self.seller) {
             if (segue.identifier == "returnProfileSegue") {
                 ref = Database.database().reference().child("profiles")
                 ref = ref?.child(self.seller!)
-                ref?.child("profiles").child(self.seller!).observeSingleEvent(of: .value, with: { (snapshot) in
+                ref?.observeSingleEvent(of: .value, with: { (snapshot) in
                     let value = snapshot.value as? NSDictionary
-                    let reviewsRef = self.ref?.child("profiles").child(self.seller!).child("reviews")
+                    let reviewsRef = self.ref?.child("reviews")
                     let reviewRef = reviewsRef?.childByAutoId()
                     let rating = self.ratingField.text
                     reviewRef?.child("rating").setValue(rating)
@@ -45,7 +66,7 @@ class ReviewSellerTableViewController: UITableViewController {
                     let reviewer = self.appDelegate.globalEmail
                     reviewRef?.child("reviewer").setValue(reviewer)
                 } ) { (error) in
-                    //print(error.localizedDescription)
+                    print(error.localizedDescription)
                 }
             }
         } else {
