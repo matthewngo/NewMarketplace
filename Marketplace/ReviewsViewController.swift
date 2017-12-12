@@ -9,16 +9,16 @@
 import UIKit
 import Firebase
 
-class ReviewsViewController: UIViewController {
+class ReviewsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var ref:DatabaseReference?
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     @IBOutlet weak var avgRating: UILabel!
     var seller: String?
-    var avg: Double?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         seller = appDelegate.globalEmail
+        calcAvg()
         // Do any additional setup after loading the view.
     }
 
@@ -28,7 +28,23 @@ class ReviewsViewController: UIViewController {
     }
     
     func calcAvg() {
-        
+        var avg: Double = 0.0
+        ref = Database.database().reference().child("profiles")
+        ref = ref?.child(self.seller!).child("reviews")
+        ref?.observeSingleEvent(of: .value, with: { (snapshot) in
+            let value = snapshot.value as? NSDictionary
+            print(value)
+            for (key, value) in value! {
+                let id = value as! [String:Any]
+                let strRating = id["rating"] as! String
+                avg += Double(strRating)!
+                print(avg)
+            }
+            print(avg)
+            self.avgRating.text = "\(avg)"
+        } ) { (error) in
+            //print(error.localizedDescription)
+        }
     }
 
     /*
