@@ -11,12 +11,75 @@ import UIKit
 class ListingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPopoverPresentationControllerDelegate {
     
     @IBOutlet weak var tableView: UITableView!
- 
+    
     var ref: DatabaseReference?
     var itemCount: Int = 0
     var items: [String:Any]?
     var descriptions: [String:Any]?
     var selectedItem: NSDictionary = [:]
+    var bookFilter: Bool = false
+    var clothesFilter: Bool = false
+    var furnFilter: Bool = false
+    var techFilter: Bool = false
+    var ticketFilter: Bool = false
+    var otherFilter: Bool = false
+    var activeFilters: [String] = []
+    
+    @IBAction func addFilter(_ sender: UIButton) {
+        if (sender.backgroundColor == UIColor.green) {
+            sender.backgroundColor = UIColor.clear
+            let title = sender.titleLabel?.text
+            if title == "Books" {
+                bookFilter = false
+            } else if title == "Clothes" {
+                clothesFilter = false
+            } else if title == "Furniture" {
+                furnFilter = false
+            } else if title == "Tech" {
+                techFilter = false
+            } else if title == "Tickets" {
+                ticketFilter = false
+            } else if title == "Other" {
+                otherFilter = false
+            }
+        } else {
+            sender.backgroundColor = UIColor.green
+            let title = sender.titleLabel?.text
+            if title == "Books" {
+                bookFilter = true
+            } else if title == "Clothes" {
+                clothesFilter = true
+            } else if title == "Furniture" {
+                furnFilter = true
+            } else if title == "Tech" {
+                techFilter = true
+            } else if title == "Tickets" {
+                ticketFilter = true
+            } else if title == "Other" {
+                otherFilter = true
+            }
+        }
+        var newFilters: [String] = []
+        if bookFilter {
+            newFilters.append("Books")
+        }
+        if clothesFilter {
+            newFilters.append("Clothing")
+        }
+        if furnFilter {
+            newFilters.append("Furniture")
+        }
+        if techFilter {
+            newFilters.append("Technology")
+        }
+        if ticketFilter {
+            newFilters.append("Tickets")
+        }
+        if otherFilter {
+            newFilters.append("Other")
+        }
+        activeFilters = newFilters
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,9 +101,6 @@ class ListingsViewController: UIViewController, UITableViewDelegate, UITableView
                         self.descriptions = self.items![key] as? [String:Any]
                     }
                 }
-                
-               
-               
             }
             
             // can also use
@@ -50,7 +110,7 @@ class ListingsViewController: UIViewController, UITableViewDelegate, UITableView
         tableView.dataSource = self
         // Do any additional setup after loading the view.
     }
-
+    
     // Workaround for ViewDidLoad after TableView
     override func viewDidAppear(_ animated: Bool) {
         tableView.reloadData()
@@ -111,7 +171,7 @@ class ListingsViewController: UIViewController, UITableViewDelegate, UITableView
             let controller = segue.destination as! ItemViewController
             let currentPath = self.tableView.indexPathForSelectedRow!
             print("selected index: \(currentPath[1])")
-           // self.items!.forEach { print($1) }
+            // self.items!.forEach { print($1) }
             selectedItem = getItem(path:currentPath[1])
             print(selectedItem)
             controller.itemDescription = selectedItem
@@ -126,15 +186,16 @@ class ListingsViewController: UIViewController, UITableViewDelegate, UITableView
         return .none
     }
     
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
+
