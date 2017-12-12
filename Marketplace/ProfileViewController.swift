@@ -56,7 +56,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
                     // Search for the profile, set allItems to profile->, email->, items(key, value)
                     for (key, value) in self.profiles! {
                         if (key == self.currentUser) {
-                            var value = value as? [String:Any]
+                            let value = value as? [String:Any]
                             self.allItems[key] = value
                             let hold = (self.allItems[self.currentUser] as? [String:Any])!
                             if (hold["items"] != nil) {

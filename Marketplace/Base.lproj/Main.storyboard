@@ -138,46 +138,46 @@
                                 <rect key="frame" x="0.0" y="94" width="375" height="524"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="LX3-tP-Rk0">
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="LX3-tP-Rk0">
                                 <rect key="frame" x="0.0" y="64" width="375" height="30"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uae-vX-Koh">
-                                        <rect key="frame" x="0.0" y="0.0" width="62.5" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="56.5" height="30"/>
                                         <state key="normal" title="Books"/>
                                         <connections>
                                             <action selector="addFilter:" destination="3WV-YD-Rei" eventType="touchUpInside" id="9Ro-Yu-lvl"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uIG-jD-7fe">
-                                        <rect key="frame" x="62.5" y="0.0" width="62.5" height="30"/>
-                                        <state key="normal" title="Clothes"/>
+                                        <rect key="frame" x="56.5" y="0.0" width="76" height="30"/>
+                                        <state key="normal" title="Clothing"/>
                                         <connections>
                                             <action selector="addFilter:" destination="3WV-YD-Rei" eventType="touchUpInside" id="yrZ-fo-5RG"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e21-a8-VBp">
-                                        <rect key="frame" x="125" y="0.0" width="62.5" height="30"/>
+                                        <rect key="frame" x="132.5" y="0.0" width="81" height="30"/>
                                         <state key="normal" title="Furniture"/>
                                         <connections>
                                             <action selector="addFilter:" destination="3WV-YD-Rei" eventType="touchUpInside" id="A9z-2t-KZj"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NTM-e7-4qp">
-                                        <rect key="frame" x="187.5" y="0.0" width="62.5" height="30"/>
+                                        <rect key="frame" x="213.5" y="0.0" width="43.5" height="30"/>
                                         <state key="normal" title="Tech"/>
                                         <connections>
                                             <action selector="addFilter:" destination="3WV-YD-Rei" eventType="touchUpInside" id="D0i-RB-gbs"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yhf-GN-Xzn">
-                                        <rect key="frame" x="250" y="0.0" width="62.5" height="30"/>
+                                        <rect key="frame" x="257" y="0.0" width="65.5" height="30"/>
                                         <state key="normal" title="Tickets"/>
                                         <connections>
                                             <action selector="addFilter:" destination="3WV-YD-Rei" eventType="touchUpInside" id="rIM-Qu-aN5"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ehr-jX-cmT">
-                                        <rect key="frame" x="312.5" y="0.0" width="62.5" height="30"/>
+                                        <rect key="frame" x="322.5" y="0.0" width="52.5" height="30"/>
                                         <state key="normal" title="Other"/>
                                         <connections>
                                             <action selector="addFilter:" destination="3WV-YD-Rei" eventType="touchUpInside" id="qid-k9-DOc"/>
@@ -203,7 +203,6 @@
                         <viewLayoutGuide key="safeArea" id="DC6-bb-CES"/>
                     </view>
                     <navigationItem key="navigationItem" title="Listings" id="mQF-B8-G03">
-                        <barButtonItem key="leftBarButtonItem" title="Filter" id="TE7-Qj-dMw"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Y0O-1T-O34">
                             <connections>
                                 <segue destination="Ziq-Dg-xtv" kind="show" id="6f2-6S-p7U"/>
