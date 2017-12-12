@@ -112,6 +112,42 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         tableView.reloadData()
     }
     
+    public func downloadImage(url: String) {
+        let imgUrl = URL(string: url)
+        DispatchQueue.main.async {
+            do {
+                let data = try Data(contentsOf: imgUrl!)
+                DispatchQueue.global().sync {
+                    self.profileImg.image = UIImage(data: data)
+                }
+            } catch  {
+                // handle error
+            }
+        }
+    }
+    
+    @IBAction func unwindToProfile(segue:UIStoryboardSegue) {
+        NSLog("Profile")
+        ref?.child("profiles").child(appDelegate.globalEmail).observeSingleEvent(of: .value, with: { (snapshot) in
+            let value = snapshot.value as? NSDictionary
+            print(value)
+            let finName = value!["name"] as? String
+            let finClassYear = value!["classYear"] as? String
+            let finAbout = value!["about"] as? String
+            if finName != "" {
+                self.name.text = finName
+            }
+            if finClassYear != "" {
+                self.classYear.text = finClassYear
+            }
+            if finAbout != "" {
+                self.about.text = finAbout
+            }
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return userItems.count
     }

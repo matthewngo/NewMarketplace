@@ -873,10 +873,22 @@
                     </view>
                     <navigationItem key="navigationItem" title="Edit Profile" id="o46-bm-47B">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="bqk-j4-e1e"/>
-                        <barButtonItem key="rightBarButtonItem" title="Submit" id="57D-DY-LHp"/>
+                        <barButtonItem key="rightBarButtonItem" title="Submit" id="57D-DY-LHp">
+                            <connections>
+                                <action selector="submitBtnPressed:" destination="IEw-mX-I3W" id="t3J-vZ-K7M"/>
+                                <segue destination="jxg-Xp-grk" kind="unwind" identifier="profileSegue" unwindAction="unwindToProfileWithSegue:" id="nhV-op-HT1"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="aboutField" destination="EdP-eH-tAC" id="Ucn-aT-PF2"/>
+                        <outlet property="classField" destination="4v2-bO-xiS" id="mXU-Sh-7gI"/>
+                        <outlet property="nameField" destination="acy-IZ-Ny8" id="eSP-Cc-mpw"/>
+                        <outlet property="profileImgBtn" destination="eCC-y4-wD4" id="KsH-5b-M5Z"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WnN-xX-KyI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="jxg-Xp-grk" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1629.5999999999999" y="721.88905547226398"/>
         </scene>

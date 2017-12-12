@@ -10,25 +10,31 @@ import UIKit
 import Firebase
 
 class EditProfileViewController: UIViewController {
-    
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var ref: DatabaseReference?
-    @IBOutlet weak var name: UITextField!
-    @IBOutlet weak var about: UITextField!
-    @IBOutlet weak var classyear: UITextField!
     
-    @IBAction func submit(_ sender: Any) {
-        ref = Database.database().reference()
-        let profiles = Database.database().reference(withPath: "profiles")
-        if (name.text != "" && about.text != "" && classyear.text != "") {
-            profiles.child("name").setValue(name.text)
-            profiles.child("about").setValue(about.text)
-            profiles.child("classyear").setValue(classyear.text)
-            
-        }
-    }
+    @IBOutlet weak var profileImgBtn: UIButton!
+    @IBOutlet weak var nameField: UITextField!
+    @IBOutlet weak var classField: UITextField!
+    @IBOutlet weak var aboutField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        ref = Database.database().reference()
+        ref?.child("profiles").child(appDelegate.globalEmail).observeSingleEvent(of: .value, with: { (snapshot) in
+            let value = snapshot.value as? NSDictionary
+            if value!["name"] != nil {
+                self.nameField.text = value!["name"] as? String
+            }
+            if value!["classYear"] != nil {
+                self.classField.text = value!["classYear"] as? String
+            }
+            if value!["about"] != nil {
+                self.aboutField.text = value!["about"] as? String
+            }
+        }) { (error) in
+            print(error.localizedDescription)
+        }
         // Do any additional setup after loading the view.
     }
 
@@ -37,7 +43,17 @@ class EditProfileViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    @IBAction func submitBtnPressed(_ sender: Any) {
+        let name = nameField.text
+        let classYear = classField.text
+        let about = aboutField.text
+        let userRef = ref?.child("profiles").child(appDelegate.globalEmail)
+        userRef?.child("name").setValue(name)
+        userRef?.child("classYear").setValue(classYear)
+        userRef?.child("about").setValue(about)
+        self.performSegue(withIdentifier: "profileSegue", sender: self)
+    }
+    
     /*
     // MARK: - Navigation
 
