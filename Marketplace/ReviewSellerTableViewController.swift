@@ -24,26 +24,32 @@ class ReviewSellerTableViewController: UITableViewController {
     }
 
     @IBAction func submitBtnPressed(_ sender: Any) {
+ 
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "returnProfileSegue") {
-            ref = Database.database().reference()
-            ref?.child("profiles").child(sellerName).observeSingleEvent(of: .value, with: { (snapshot) in
-                let value = snapshot.value as? NSDictionary
-                let reviewsRef = ref.child("profiles").child(sellerName).child("reviews")
-                let reviewRef = reviewsRef.childByAutoId()
-                let rating = ratingField.text
-                reviewRef.child("rating").setValue(rating)
-                let comment = commentField.text
-                reviewRef.child("comment").setValue(comment)
-                let product = productField.text
-                reviewRef.child("product").setValue(product)
-                let reviewer = appDelegate.globalEmail
-                reviewRef.child("reviewer").setValue(reviewer)
-            } ) { (error) in
-               print(error.localizedDescription)
+        if(self.appDelegate.globalEmail != self.seller) {
+            if (segue.identifier == "returnProfileSegue") {
+                ref = Database.database().reference().child("profiles")
+                ref = ref?.child(self.seller!)
+                ref?.child("profiles").child(self.seller!).observeSingleEvent(of: .value, with: { (snapshot) in
+                    let value = snapshot.value as? NSDictionary
+                    let reviewsRef = self.ref?.child("profiles").child(self.seller!).child("reviews")
+                    let reviewRef = reviewsRef?.childByAutoId()
+                    let rating = self.ratingField.text
+                    reviewRef?.child("rating").setValue(rating)
+                    let comment = self.commentField.text
+                    reviewRef?.child("comment").setValue(comment)
+                    let product = self.itemField.text
+                    reviewRef?.child("product").setValue(product)
+                    let reviewer = self.appDelegate.globalEmail
+                    reviewRef?.child("reviewer").setValue(reviewer)
+                } ) { (error) in
+                    //print(error.localizedDescription)
+                }
             }
+        } else {
+            print("You can't review yourself")
         }
     }
     override func didReceiveMemoryWarning() {
