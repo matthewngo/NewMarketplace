@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -470,7 +470,6 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="yly-Qz-c93" firstAttribute="top" secondItem="LX3-tP-Rk0" secondAttribute="bottom" constant="30" id="3ri-BF-dlM"/>
                             <constraint firstItem="LX3-tP-Rk0" firstAttribute="trailing" secondItem="DC6-bb-CES" secondAttribute="trailing" id="4l2-dd-10Z"/>
                             <constraint firstItem="yly-Qz-c93" firstAttribute="trailing" secondItem="DC6-bb-CES" secondAttribute="trailing" id="82u-ra-uGy"/>
                             <constraint firstItem="yly-Qz-c93" firstAttribute="leading" secondItem="DC6-bb-CES" secondAttribute="leading" id="A4Z-tj-0eW"/>
@@ -971,7 +970,11 @@
                         <viewLayoutGuide key="safeArea" id="A5e-lO-11P"/>
                     </view>
                     <navigationItem key="navigationItem" title="Profile" id="1JT-GY-lcU">
-                        <barButtonItem key="leftBarButtonItem" title="Log Out" id="IMN-cI-urO"/>
+                        <barButtonItem key="leftBarButtonItem" title="Log Out" id="IMN-cI-urO">
+                            <connections>
+                                <segue destination="8KT-vc-u7o" kind="unwind" unwindAction="unwindToLoginWithSegue:" id="p1Q-AY-WBB"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="edit" id="joJ-qZ-5Tm">
                             <connections>
                                 <segue destination="IEw-mX-I3W" kind="show" id="FFj-wF-yvN"/>
@@ -989,6 +992,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2yO-sz-oTZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="8KT-vc-u7o" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="816.79999999999995" y="715.59220389805103"/>
         </scene>
@@ -1123,48 +1127,21 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Dws-nV-6uw" userLabel="Seller Stack View">
-                                <rect key="frame" x="39" y="310.5" width="216.5" height="25"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Dws-nV-6uw" userLabel="Seller Stack View">
+                                <rect key="frame" x="39" y="310.5" width="133.5" height="50"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eKb-bE-GfC">
-                                        <rect key="frame" x="0.0" y="0.0" width="39" height="25"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="39" height="50"/>
                                         <state key="normal" title="Seller"/>
                                         <connections>
                                             <segue destination="ghz-iE-ip7" kind="show" identifier="sellerProfileSegue" id="Asi-Ud-4Y8"/>
                                         </connections>
                                     </button>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="n4Q-Xy-XT6" userLabel="Star Stack View">
-                                        <rect key="frame" x="49" y="0.0" width="133" height="25"/>
-                                        <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Star - Filled In" translatesAutoresizingMaskIntoConstraints="NO" id="5Wz-uR-ZP6">
-                                                <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" secondItem="5Wz-uR-ZP6" secondAttribute="height" multiplier="1:1" id="R1Q-Ff-axg"/>
-                                                    <constraint firstAttribute="width" constant="25" id="VQd-FP-sDO"/>
-                                                </constraints>
-                                            </imageView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Star - Filled In" translatesAutoresizingMaskIntoConstraints="NO" id="12M-9E-cgb">
-                                                <rect key="frame" x="27" y="0.0" width="25" height="25"/>
-                                            </imageView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Star - Filled In" translatesAutoresizingMaskIntoConstraints="NO" id="4w5-7A-8ug">
-                                                <rect key="frame" x="54" y="0.0" width="25" height="25"/>
-                                            </imageView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Star - Filled In" translatesAutoresizingMaskIntoConstraints="NO" id="VyM-Va-xia">
-                                                <rect key="frame" x="81" y="0.0" width="25" height="25"/>
-                                            </imageView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Star - Filled In" translatesAutoresizingMaskIntoConstraints="NO" id="KjI-cr-ico">
-                                                <rect key="frame" x="108" y="0.0" width="25" height="25"/>
-                                            </imageView>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstItem="VyM-Va-xia" firstAttribute="width" secondItem="5Wz-uR-ZP6" secondAttribute="width" id="Sdn-BD-ujL"/>
-                                            <constraint firstItem="12M-9E-cgb" firstAttribute="width" secondItem="5Wz-uR-ZP6" secondAttribute="width" id="XY9-MC-xk2"/>
-                                            <constraint firstItem="4w5-7A-8ug" firstAttribute="width" secondItem="5Wz-uR-ZP6" secondAttribute="width" id="c05-w9-aGe"/>
-                                            <constraint firstItem="KjI-cr-ico" firstAttribute="width" secondItem="5Wz-uR-ZP6" secondAttribute="width" id="h3E-oB-NbI"/>
-                                        </constraints>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="n4Q-Xy-XT6" userLabel="Star Stack View">
+                                        <rect key="frame" x="49" y="0.0" width="50" height="50"/>
                                     </stackView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JZZ-OU-9Y2">
-                                        <rect key="frame" x="192" y="0.0" width="24.5" height="25"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="4.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JZZ-OU-9Y2">
+                                        <rect key="frame" x="109" y="0.0" width="24.5" height="50"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -1172,7 +1149,7 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MSR-nC-iEj">
-                                <rect key="frame" x="135" y="360.5" width="105" height="30"/>
+                                <rect key="frame" x="135" y="385.5" width="105" height="30"/>
                                 <color key="backgroundColor" red="0.29411764705882354" green="0.1803921568627451" blue="0.51372549019607838" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Message Seller">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1182,7 +1159,7 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="aCP-Kb-1iv">
-                                <rect key="frame" x="0.0" y="415.5" width="375" height="202.5"/>
+                                <rect key="frame" x="0.0" y="440.5" width="375" height="177.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
@@ -1217,6 +1194,7 @@
                         <outlet property="rating" destination="JZZ-OU-9Y2" id="Kwg-Vd-bjd"/>
                         <outlet property="sellerBtn" destination="MSR-nC-iEj" id="OHG-5L-hif"/>
                         <outlet property="sellerName" destination="eKb-bE-GfC" id="d5D-EK-0BE"/>
+                        <outlet property="starStack" destination="n4Q-Xy-XT6" id="DjS-6u-ClC"/>
                         <outlet property="tableView" destination="aCP-Kb-1iv" id="2NA-1S-jvd"/>
                     </connections>
                 </viewController>
@@ -1247,7 +1225,6 @@
     <resources>
         <image name="Camera" width="101" height="101"/>
         <image name="Image" width="750" height="1334"/>
-        <image name="Star - Filled In" width="41" height="40"/>
         <image name="UW_logo" width="450" height="303"/>
         <image name="iMarket" width="240" height="79"/>
         <image name="listings_icon" width="15" height="11"/>
@@ -1256,7 +1233,7 @@
         <image name="reviews_icon" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="BAD-hD-8xI"/>
+        <segue reference="8zw-NI-dvg"/>
         <segue reference="Asi-Ud-4Y8"/>
     </inferredMetricsTieBreakers>
 </document>

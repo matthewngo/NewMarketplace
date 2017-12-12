@@ -26,6 +26,13 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var bestOfferLabel: UILabel!
     @IBOutlet weak var sellerBtn: UIButton!
     @IBOutlet weak var sellerName: UIButton!
+    // rating stars
+    @IBOutlet weak var star1: UIImageView!
+    @IBOutlet weak var star2: UIImageView!
+    @IBOutlet weak var star3: UIImageView!
+    @IBOutlet weak var star4: UIImageView!
+    @IBOutlet weak var star5: UIImageView!
+    @IBOutlet weak var starStack: UIStackView!
     
     var titleText: String?
     var priceText: String?
@@ -88,7 +95,13 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
             // Get user value
             let value = snapshot.value as? NSDictionary
             if snapshot.hasChild("avgRating") {
-                self.rating.text = "\((value!["avgRating"])!)"
+                let val = (value!["avgRating"])!
+                self.rating.text = "\(val)"
+                let num = (val as! NSNumber).int64Value
+                print(num)
+                for i in 1 ... num {
+                    self.starStack.addArrangedSubview(UIImageView(image: UIImage(named: "star")))
+                }
             } else {
                 self.rating.text = "No Reviews Yet"
             }
