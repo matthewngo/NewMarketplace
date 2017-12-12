@@ -14,6 +14,8 @@ class ReviewsViewController: UIViewController, UITableViewDelegate, UITableViewD
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     @IBOutlet weak var avgRating: UILabel!
     var seller: String?
+    
+    
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {

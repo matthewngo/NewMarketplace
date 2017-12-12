@@ -52,6 +52,7 @@ class LoginViewController: UIViewController {
         loginBtn.contentEdgeInsets = UIEdgeInsetsMake(6, 10, 6, 10)
         UINavigationBar.appearance().barTintColor = UIColor(red: 168/255, green: 198/255, blue: 159/255, alpha: 1.0)
         UINavigationBar.appearance().isTranslucent = false
+        
         //UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor : UIColor.white]
         // Do any additional setup after loading the view.
     }

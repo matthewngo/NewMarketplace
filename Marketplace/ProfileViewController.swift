@@ -36,6 +36,8 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.reloadData()
+        reviewButton.layer.cornerRadius = 7
+        reviewButton.contentEdgeInsets = UIEdgeInsetsMake(6, 20, 6, 20) // top, left, bottom, right
         ref = Database.database().reference()
         if (self.personInformation == "" || self.personInformation == self.appDelegate.globalEmail) {
             self.reviewButton.isHidden = true

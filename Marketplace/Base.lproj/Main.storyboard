@@ -363,7 +363,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Review Seller" id="QGW-RN-mrM">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="JMX-Fl-y7B"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="JMX-Fl-y7B">
+                            <connections>
+                                <segue destination="yaN-KR-wjV" kind="unwind" unwindAction="unwindToProfileWithSegue:" id="qwh-Tt-XPg"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Submit" id="ia9-7p-Ef6">
                             <connections>
                                 <action selector="submitBtnPressed:" destination="ZVK-iO-aUk" id="8ON-4e-Arh"/>
@@ -908,7 +912,7 @@
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="QHR-CO-3ss">
-                                <rect key="frame" x="0.0" y="215" width="375" height="109.5"/>
+                                <rect key="frame" x="0.0" y="215" width="375" height="79.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RAX-fA-AaG">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="38.5"/>
@@ -928,23 +932,23 @@
                                         <color key="textColor" red="0.97804109380000004" green="0.97670762519999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gkk-mS-v7K">
-                                        <rect key="frame" x="0.0" y="79.5" width="375" height="30"/>
-                                        <color key="backgroundColor" red="0.59999999999999998" green="0.63137254899999995" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
-                                        <state key="normal" title="Review Seller">
-                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                        <connections>
-                                            <segue destination="ZVK-iO-aUk" kind="show" identifier="reviewSegue" id="RH6-9I-HQq"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.97804109380000004" green="0.97670762519999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="las-lb-iKd">
-                                <rect key="frame" x="0.0" y="344" width="375" height="273.5"/>
+                                <rect key="frame" x="0.0" y="376" width="375" height="242"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gkk-mS-v7K">
+                                <rect key="frame" x="141" y="311" width="92" height="30"/>
+                                <color key="backgroundColor" red="0.59999999999999998" green="0.63137254899999995" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Review Seller">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="ZVK-iO-aUk" kind="show" identifier="reviewSegue" id="RH6-9I-HQq"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -953,11 +957,13 @@
                             <constraint firstItem="A5e-lO-11P" firstAttribute="bottom" secondItem="las-lb-iKd" secondAttribute="bottom" id="GGy-0G-ol0"/>
                             <constraint firstItem="las-lb-iKd" firstAttribute="leading" secondItem="A5e-lO-11P" secondAttribute="leading" id="KCS-73-ixx"/>
                             <constraint firstItem="YxN-cL-1aO" firstAttribute="top" secondItem="A5e-lO-11P" secondAttribute="top" constant="16" id="NCx-xC-POI"/>
+                            <constraint firstItem="Gkk-mS-v7K" firstAttribute="centerX" secondItem="41b-XJ-BRZ" secondAttribute="centerX" id="Nxx-ck-r4E"/>
+                            <constraint firstItem="Gkk-mS-v7K" firstAttribute="top" secondItem="QHR-CO-3ss" secondAttribute="bottom" constant="16" id="UXm-AC-Nkj"/>
                             <constraint firstItem="QHR-CO-3ss" firstAttribute="top" secondItem="YxN-cL-1aO" secondAttribute="bottom" constant="10" id="Ul2-FM-W6G"/>
                             <constraint firstItem="Ai5-BQ-Owr" firstAttribute="leading" secondItem="A5e-lO-11P" secondAttribute="leading" id="VGQ-of-lNX"/>
                             <constraint firstItem="Ai5-BQ-Owr" firstAttribute="trailing" secondItem="A5e-lO-11P" secondAttribute="trailing" id="ZYi-PA-F06"/>
                             <constraint firstItem="A5e-lO-11P" firstAttribute="trailing" secondItem="las-lb-iKd" secondAttribute="trailing" id="a7S-VU-xy9"/>
-                            <constraint firstItem="las-lb-iKd" firstAttribute="top" secondItem="QHR-CO-3ss" secondAttribute="bottom" constant="20" id="jy2-JA-Eij"/>
+                            <constraint firstItem="las-lb-iKd" firstAttribute="top" secondItem="Gkk-mS-v7K" secondAttribute="bottom" constant="35" id="jy2-JA-Eij"/>
                             <constraint firstItem="A5e-lO-11P" firstAttribute="trailing" secondItem="QHR-CO-3ss" secondAttribute="trailing" id="nEW-NE-zJF"/>
                             <constraint firstItem="YxN-cL-1aO" firstAttribute="centerX" secondItem="41b-XJ-BRZ" secondAttribute="centerX" id="sMC-eW-aFu"/>
                             <constraint firstItem="QHR-CO-3ss" firstAttribute="leading" secondItem="A5e-lO-11P" secondAttribute="leading" id="umh-FT-od2"/>
@@ -965,11 +971,7 @@
                         <viewLayoutGuide key="safeArea" id="A5e-lO-11P"/>
                     </view>
                     <navigationItem key="navigationItem" title="Profile" id="1JT-GY-lcU">
-                        <barButtonItem key="leftBarButtonItem" title="Log Out" id="IMN-cI-urO">
-                            <connections>
-                                <segue destination="ecx-sW-iIf" kind="unwind" unwindAction="unwindToLoginWithSegue:" id="0AM-FJ-wnq"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="leftBarButtonItem" title="Log Out" id="IMN-cI-urO"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="edit" id="joJ-qZ-5Tm">
                             <connections>
                                 <segue destination="IEw-mX-I3W" kind="show" id="FFj-wF-yvN"/>
@@ -987,9 +989,8 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2yO-sz-oTZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="ecx-sW-iIf" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="817" y="716"/>
+            <point key="canvasLocation" x="816.79999999999995" y="715.59220389805103"/>
         </scene>
         <!--EditProfileViewController-->
         <scene sceneID="VsU-k5-zsA">
@@ -1255,7 +1256,7 @@
         <image name="reviews_icon" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="8zw-NI-dvg"/>
+        <segue reference="BAD-hD-8xI"/>
         <segue reference="Asi-Ud-4Y8"/>
     </inferredMetricsTieBreakers>
 </document>
