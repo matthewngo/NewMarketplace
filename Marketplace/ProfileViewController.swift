@@ -204,6 +204,12 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         return cell
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "reviewSegue") {
+            let controller = segue.destination as! ReviewSellerTableViewController
+            controller.seller = self.personInformation
+        }
+    }
    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

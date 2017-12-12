@@ -110,7 +110,9 @@ class AddItemViewController: UITableViewController,UIImagePickerControllerDelega
         price.text = ""
         descriptionField.text = ""
         bestOfferSwitch.setOn(false, animated: false)
-        
+        for category in categoryArray {
+            category.accessoryType = .none
+        }
     }
     func checkCondition() {
         switch segmentedControl.selectedSegmentIndex {
