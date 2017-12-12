@@ -14,6 +14,8 @@ class LoginViewController: UIViewController {
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     @IBOutlet weak var email: UITextField!
     
+    @IBOutlet weak var loginBtn: UIButton!
+    
     @IBAction func loginBtnPressed(_ sender: Any) {
         ref = Database.database().reference()
         let profilesRef = Database.database().reference(withPath: "profiles")
@@ -46,7 +48,8 @@ class LoginViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        loginBtn.layer.cornerRadius = 5
+        loginBtn.contentEdgeInsets = UIEdgeInsetsMake(6, 10, 6, 10)
         // Do any additional setup after loading the view.
     }
 

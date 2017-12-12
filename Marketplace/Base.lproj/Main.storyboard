@@ -20,48 +20,87 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="UW Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vyh-Wv-V6t">
-                                <rect key="frame" x="16" y="295.5" width="343" height="30"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Marketplace" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OLO-Ic-NTX">
-                                <rect key="frame" x="128" y="166" width="118" height="43"/>
-                                <color key="backgroundColor" red="1" green="0.2527923882" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mh1-9Q-biM">
-                                <rect key="frame" x="168.5" y="381.5" width="38" height="30"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="Login"/>
+                                <rect key="frame" x="48" y="419" width="279" height="35"/>
+                                <color key="backgroundColor" red="0.59999999999999998" green="0.63137254901960782" blue="0.65098039215686276" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="3Py-0g-jlH"/>
+                                </constraints>
+                                <state key="normal" title="Login">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="loginBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="H10-Pr-mNW"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="UW_logo" translatesAutoresizingMaskIntoConstraints="NO" id="mv1-Yu-QFp">
+                                <rect key="frame" x="289" y="604" width="70" height="47"/>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="mv1-Yu-QFp" secondAttribute="height" multiplier="70:47" id="EdE-Zn-XBx"/>
+                                    <constraint firstAttribute="width" secondItem="mv1-Yu-QFp" secondAttribute="height" multiplier="70:47" id="aFQ-O2-UJQ"/>
+                                    <constraint firstAttribute="width" constant="70" id="qie-aP-DBq"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iMarket" translatesAutoresizingMaskIntoConstraints="NO" id="JY4-N3-apg">
+                                <rect key="frame" x="67" y="160" width="240" height="79"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="For" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="URF-ix-1IA">
+                                <rect key="frame" x="257" y="620" width="19" height="14.5"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Students" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rup-hg-2Vn">
+                                <rect key="frame" x="241" y="632" width="51" height="14.5"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="UW Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vyh-Wv-V6t">
+                                <rect key="frame" x="48" y="364" width="279" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="9fX-aZ-qCl"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.6588235294117647" green="0.77647058823529413" blue="0.62352941176470589" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Vyh-Wv-V6t" secondAttribute="trailing" constant="16" id="NXd-Qh-je0"/>
-                            <constraint firstItem="mh1-9Q-biM" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="XZF-xg-LJB"/>
-                            <constraint firstItem="Vyh-Wv-V6t" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="l8M-LF-ztV"/>
-                            <constraint firstItem="OLO-Ic-NTX" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="146" id="qL4-Xg-yNq"/>
-                            <constraint firstItem="OLO-Ic-NTX" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="tgB-AM-va8"/>
-                            <constraint firstItem="mh1-9Q-biM" firstAttribute="top" secondItem="Vyh-Wv-V6t" secondAttribute="bottom" constant="56" id="uTA-vU-HPu"/>
-                            <constraint firstItem="Vyh-Wv-V6t" firstAttribute="top" secondItem="OLO-Ic-NTX" secondAttribute="bottom" constant="109" id="uWC-vR-5wa"/>
+                            <constraint firstItem="mh1-9Q-biM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="48" id="5J5-V0-0EP"/>
+                            <constraint firstItem="mv1-Yu-QFp" firstAttribute="leading" secondItem="URF-ix-1IA" secondAttribute="trailing" constant="16" id="6ZK-9t-5et"/>
+                            <constraint firstItem="rup-hg-2Vn" firstAttribute="top" secondItem="URF-ix-1IA" secondAttribute="bottom" constant="0.5" id="APx-Cb-7Ux"/>
+                            <constraint firstItem="mh1-9Q-biM" firstAttribute="top" secondItem="Vyh-Wv-V6t" secondAttribute="bottom" constant="20" id="D6s-I8-iGS"/>
+                            <constraint firstItem="JY4-N3-apg" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="EEu-NI-LAL"/>
+                            <constraint firstItem="Vyh-Wv-V6t" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Fi2-lG-g6V"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="rup-hg-2Vn" secondAttribute="bottom" constant="20" id="Hna-nJ-Vnm"/>
+                            <constraint firstItem="mv1-Yu-QFp" firstAttribute="top" secondItem="mh1-9Q-biM" secondAttribute="bottom" constant="150" id="NOC-en-K2D"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="mv1-Yu-QFp" secondAttribute="bottom" constant="16" id="Oze-XW-He8"/>
+                            <constraint firstItem="Vyh-Wv-V6t" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="48" id="Szs-Pt-XU7"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="mh1-9Q-biM" secondAttribute="trailing" constant="48" id="WVS-qq-Gba"/>
+                            <constraint firstItem="JY4-N3-apg" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="140" id="XF2-oD-OPf"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="mv1-Yu-QFp" secondAttribute="trailing" constant="16" id="d5T-iK-Hac"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="mv1-Yu-QFp" secondAttribute="trailing" constant="16" id="h68-Bf-YKR"/>
+                            <constraint firstItem="mv1-Yu-QFp" firstAttribute="leading" secondItem="rup-hg-2Vn" secondAttribute="trailing" id="hcc-On-h41"/>
+                            <constraint firstItem="mh1-9Q-biM" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="p0I-d4-N9C"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Vyh-Wv-V6t" secondAttribute="trailing" constant="48" id="ujf-7c-KJF"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="mv1-Yu-QFp" secondAttribute="bottom" constant="16" id="um8-l1-B8w"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="mv1-Yu-QFp" secondAttribute="trailing" constant="16" id="vk3-ui-Wxt"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="mv1-Yu-QFp" secondAttribute="bottom" constant="16" id="xZp-He-N1h"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="email" destination="Vyh-Wv-V6t" id="Dnf-k3-lH6"/>
+                        <outlet property="loginBtn" destination="mh1-9Q-biM" id="sL3-km-D21"/>
                         <segue destination="ah3-MC-UPz" kind="show" identifier="loginSegue" id="KdS-ag-wQ3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1775" y="-356"/>
+            <point key="canvasLocation" x="-1775.2" y="-356.67166416791605"/>
         </scene>
         <!--Reviews-->
         <scene sceneID="AvW-l3-mwV">
@@ -808,7 +847,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="6n2-V2-1jq" userLabel="Price Stack View">
-                                <rect key="frame" x="39" y="280" width="135" height="20.5"/>
+                                <rect key="frame" x="39" y="280" width="132.5" height="20.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$100.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E9g-Oh-In4">
                                         <rect key="frame" x="0.0" y="0.0" width="66.5" height="20.5"/>
@@ -817,8 +856,8 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Best Offer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mZg-wF-BDW">
-                                        <rect key="frame" x="74.5" y="0.0" width="60.5" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
+                                        <rect key="frame" x="74.5" y="0.0" width="58" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" red="0.1080850768" green="0.4996430838" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -868,7 +907,7 @@
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MSR-nC-iEj">
                                 <rect key="frame" x="135" y="360.5" width="105" height="30"/>
-                                <color key="backgroundColor" red="0.0" green="0.2074289939" blue="0.4300444162" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.29411764705882354" green="0.1803921568627451" blue="0.51372549019607838" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Message Seller">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -939,6 +978,8 @@
         <image name="Camera" width="101" height="101"/>
         <image name="Image" width="750" height="1334"/>
         <image name="Star - Filled In" width="41" height="40"/>
+        <image name="UW_logo" width="450" height="303"/>
+        <image name="iMarket" width="240" height="79"/>
         <image name="listings_icon" width="15" height="11"/>
         <image name="profile_default" width="100" height="100"/>
         <image name="profile_icon" width="14" height="15"/>
