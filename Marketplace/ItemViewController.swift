@@ -17,6 +17,7 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var ref: DatabaseReference?
     var sections = ["Condition", "Description", "Category"]
     
+    @IBOutlet weak var rating: UILabel!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var itemImg: UIImageView!
     @IBOutlet weak var navTitle: UINavigationItem!

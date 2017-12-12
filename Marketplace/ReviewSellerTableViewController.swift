@@ -27,9 +27,9 @@ class ReviewSellerTableViewController: UITableViewController {
         if(self.appDelegate.globalEmail != self.seller) {
             ref = Database.database().reference().child("profiles")
             ref = ref?.child(self.seller!)
-            ref?.child("profiles").child(self.seller!).observeSingleEvent(of: .value, with: { (snapshot) in
+            ref?.observeSingleEvent(of: .value, with: { (snapshot) in
                 let value = snapshot.value as? NSDictionary
-                let reviewsRef = self.ref?.child("profiles").child(self.seller!).child("reviews")
+                let reviewsRef = self.ref?.child("reviews")
                 let reviewRef = reviewsRef?.childByAutoId()
                 let rating = self.ratingField.text
                 reviewRef?.child("rating").setValue(rating)
