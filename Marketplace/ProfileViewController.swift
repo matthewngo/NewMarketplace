@@ -70,10 +70,17 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         ref?.child("profiles").child(appDelegate.globalEmail).observeSingleEvent(of: .value, with: { (snapshot) in
             let value = snapshot.value as? NSDictionary
             print(value)
-            if snapshot.hasChild("profileImageUrl") {
-                self.downloadImage(url: (self.descriptions!["profileImageUrl"] as! String))
-            } else {
-                self.profileImg.image = UIImage(named: "profile_default")
+            if snapshot.hasChild("profileURL") && value!["profileURL"] as? String != "" { // set with image user added
+                let url = value!["profileURL"] as? String
+                print(url)
+                self.downloadImage(url: url!)
+                self.profileImg.contentMode = .scaleAspectFill
+            } else { // if no image, set with default profile image
+                let origImage = UIImage(named: "profile_default")
+                let tintedImage = origImage?.withRenderingMode(.alwaysTemplate)
+                self.profileImg.image = tintedImage
+                self.profileImg.tintColor = .white // making the profile image white instead of black
+                //self.profileImg.image = UIImage(named: "profile_default")
             }
             if snapshot.hasChild("name") {
                 if value!["name"] as? String != "" {
@@ -124,6 +131,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     public func downloadImage(url: String) {
         let imgUrl = URL(string: url)
+        print(imgUrl)
         DispatchQueue.main.async {
             do {
                 let data = try Data(contentsOf: imgUrl!)
@@ -144,6 +152,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             let finName = value!["name"] as? String
             let finClassYear = value!["classYear"] as? String
             let finAbout = value!["about"] as? String
+            let finUrl = value!["profileURL"] as? String
             if finName != "" {
                 self.name.text = finName
             }
@@ -152,6 +161,10 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             }
             if finAbout != "" {
                 self.about.text = finAbout
+            }
+            if finUrl != "" {
+                self.downloadImage(url: finUrl!)
+                self.profileImg.contentMode = .scaleAspectFill
             }
         }) { (error) in
             print(error.localizedDescription)

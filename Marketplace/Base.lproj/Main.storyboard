@@ -70,6 +70,53 @@
                     <view key="view" contentMode="scaleToFill" id="Jr2-8l-T3H">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Your Average Rating:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cL2-Ch-X2Z">
+                                <rect key="frame" x="64" y="89" width="246" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="4.67" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YwV-xd-l52">
+                                <rect key="frame" x="166" y="139" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="5Oq-6f-wxH" userLabel="Star Stack View">
+                                <rect key="frame" x="121" y="204" width="133" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="Star - Filled In" translatesAutoresizingMaskIntoConstraints="NO" id="O56-1m-iC6">
+                                        <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="O56-1m-iC6" secondAttribute="height" multiplier="1:1" id="L1w-Ms-YlW"/>
+                                            <constraint firstAttribute="width" constant="25" id="XIj-Tk-ipe"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="Star - Filled In" translatesAutoresizingMaskIntoConstraints="NO" id="pvB-Ya-8ow">
+                                        <rect key="frame" x="27" y="0.0" width="25" height="25"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="Star - Filled In" translatesAutoresizingMaskIntoConstraints="NO" id="Qne-P6-WSX">
+                                        <rect key="frame" x="54" y="0.0" width="25" height="25"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="Star - Filled In" translatesAutoresizingMaskIntoConstraints="NO" id="MO3-hM-2QL">
+                                        <rect key="frame" x="81" y="0.0" width="25" height="25"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="Star - Filled In" translatesAutoresizingMaskIntoConstraints="NO" id="IRX-xv-jg5">
+                                        <rect key="frame" x="108" y="0.0" width="25" height="25"/>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="IRX-xv-jg5" firstAttribute="width" secondItem="O56-1m-iC6" secondAttribute="width" id="795-x5-Iwn"/>
+                                    <constraint firstItem="Qne-P6-WSX" firstAttribute="width" secondItem="O56-1m-iC6" secondAttribute="width" id="8u3-t5-vsa"/>
+                                    <constraint firstItem="MO3-hM-2QL" firstAttribute="width" secondItem="O56-1m-iC6" secondAttribute="width" id="HIN-zb-NVZ"/>
+                                    <constraint firstItem="pvB-Ya-8ow" firstAttribute="width" secondItem="O56-1m-iC6" secondAttribute="width" id="ihe-Og-DAb"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="ppl-QF-7Kw"/>
                     </view>
@@ -685,13 +732,16 @@
                                 <rect key="frame" x="0.0" y="341" width="375" height="277"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eCC-y4-wD4">
-                                <rect key="frame" x="125" y="80" width="125" height="125"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eCC-y4-wD4">
+                                <rect key="frame" x="125.5" y="80" width="125" height="125"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="125" id="njK-aW-oMy"/>
                                     <constraint firstAttribute="width" constant="125" id="p3b-rv-i9o"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" image="profile_default"/>
+                                <connections>
+                                    <action selector="imgBtnPressed:" destination="IEw-mX-I3W" eventType="touchUpInside" id="UG8-tl-8G5"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -713,7 +763,11 @@
                         <viewLayoutGuide key="safeArea" id="UXY-5Z-hIS"/>
                     </view>
                     <navigationItem key="navigationItem" title="Edit Profile" id="o46-bm-47B">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="bqk-j4-e1e"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="bqk-j4-e1e">
+                            <connections>
+                                <segue destination="jxg-Xp-grk" kind="unwind" unwindAction="unwindToProfileWithSegue:" id="err-NY-7eS"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Submit" id="57D-DY-LHp">
                             <connections>
                                 <action selector="submitBtnPressed:" destination="IEw-mX-I3W" id="t3J-vZ-K7M"/>
@@ -886,6 +940,7 @@
         <image name="Image" width="750" height="1334"/>
         <image name="Star - Filled In" width="41" height="40"/>
         <image name="listings_icon" width="15" height="11"/>
+        <image name="profile_default" width="100" height="100"/>
         <image name="profile_icon" width="14" height="15"/>
         <image name="reviews_icon" width="25" height="25"/>
     </resources>
