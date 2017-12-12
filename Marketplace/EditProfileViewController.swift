@@ -44,6 +44,10 @@ class EditProfileViewController: UIViewController {
     }
     
     @IBAction func submitBtnPressed(_ sender: Any) {
+        self.performSegue(withIdentifier: "profileSegue", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let name = nameField.text
         let classYear = classField.text
         let about = aboutField.text
@@ -51,9 +55,8 @@ class EditProfileViewController: UIViewController {
         userRef?.child("name").setValue(name)
         userRef?.child("classYear").setValue(classYear)
         userRef?.child("about").setValue(about)
-        self.performSegue(withIdentifier: "profileSegue", sender: self)
+        print(ref?.child("profiles").child(appDelegate.globalEmail).child("name"))
     }
-    
     /*
     // MARK: - Navigation
 

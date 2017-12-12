@@ -65,6 +65,11 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         ref?.child("profiles").child(appDelegate.globalEmail).observeSingleEvent(of: .value, with: { (snapshot) in
             let value = snapshot.value as? NSDictionary
             print(value)
+            if snapshot.hasChild("profileImageUrl") {
+                self.downloadImage(url: (self.descriptions!["profileImageUrl"] as! String))
+            } else {
+                self.profileImg.image = UIImage(named: "profile_default")
+            }
             if snapshot.hasChild("name") {
                 if value!["name"] as? String != "" {
                     self.name.text = value!["name"] as? String
