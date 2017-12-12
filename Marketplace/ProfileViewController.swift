@@ -62,6 +62,42 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
                 // Do any additional setup after loading the view.
             }
         })
+        ref?.child("profiles").child(appDelegate.globalEmail).observeSingleEvent(of: .value, with: { (snapshot) in
+            let value = snapshot.value as? NSDictionary
+            print(value)
+            if snapshot.hasChild("name") {
+                if value!["name"] as? String != "" {
+                    self.name.text = value!["name"] as? String
+                } else {
+                    self.name.text = "Name"
+                }
+            } else {
+                self.name.text = "Name"
+            }
+            
+            if snapshot.hasChild("classYear") {
+                if value!["classYear"] as? String != "" {
+                    self.classYear.text = value!["classYear"] as? String
+                } else {
+                    self.classYear.text = "Class Year"
+                }
+            } else {
+                self.classYear.text = "Class Year"
+            }
+            if snapshot.hasChild("about") {
+                if value!["about"] as? String != "" {
+                    self.about.text = value!["about"] as? String
+                } else {
+                    self.about.text = "About"
+                }
+            } else {
+                self.about.text = "About"
+            }
+        } ) { (error) in
+            print(error.localizedDescription)
+        }
+        self.profileImg.layer.cornerRadius = self.profileImg.frame.size.width / 2;
+        self.profileImg.clipsToBounds = true;
         tableView.delegate = self
         tableView.dataSource = self
         
