@@ -37,7 +37,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         super.viewDidLoad()
         tableView.reloadData()
         ref = Database.database().reference()
-        if (self.personInformation == "") {
+        if (self.personInformation == "" || self.personInformation == self.appDelegate.globalEmail) {
             self.reviewButton.isHidden = true
             self.currentUser = self.appDelegate.globalEmail
         } else {
@@ -46,8 +46,6 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
         ref?.observeSingleEvent(of: .value, with: { snapshot in
             if !snapshot.exists() { return }
-
-            
             if let userName = snapshot.value as? [String:Any] {
                 if (userName["items"] != nil) {
                     self.items = userName["items"] as? [String: Any]
@@ -103,7 +101,6 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             } else {
                 self.name.text = "Name"
             }
-            
             if snapshot.hasChild("classYear") {
                 if value!["classYear"] as? String != "" {
                     self.classYear.text = value!["classYear"] as? String
@@ -143,7 +140,6 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     public func downloadImage(url: String) {
         let imgUrl = URL(string: url)
-        print(imgUrl)
         DispatchQueue.main.async {
             do {
                 let data = try Data(contentsOf: imgUrl!)
@@ -160,7 +156,6 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         NSLog("Profile")
         ref?.child("profiles").child(appDelegate.globalEmail).observeSingleEvent(of: .value, with: { (snapshot) in
             let value = snapshot.value as? NSDictionary
-            print(value)
             let finName = value!["name"] as? String
             let finClassYear = value!["classYear"] as? String
             let finAbout = value!["about"] as? String
@@ -219,6 +214,8 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.performSegue(withIdentifier: "yourItemView", sender:self)
     }
    
+    
+    
     /*
      // MARK: - Navigation
      
