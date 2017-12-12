@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 
 class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPopoverPresentationControllerDelegate {
-    
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var aboutData = [String]()
     var database = [String:Any]()
     var items: [String:Any]?
@@ -19,34 +19,47 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     var currentUser: String = ""
     var ref:DatabaseReference?
     var userItems: [String: Any] = [:]
+    var profiles: [String:Any]?
+    var allItems: [String:Any] = [:]
+    var allIDs : [String:Any] = [:]
+    var ID: [String] = []
+    
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var classYear: UILabel!
     @IBOutlet weak var about: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var profileImg: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         ref = Database.database().reference()
         ref?.observeSingleEvent(of: .value, with: { snapshot in
             if !snapshot.exists() { return }
-        
+            self.currentUser = self.appDelegate.globalEmail
             if let userName = snapshot.value as? [String:Any] {
-                let email = userName["currentUser"] as? [String:Any]
-                self.currentUser = (email!["email"] as? String)!
                 self.items = userName["items"] as? [String: Any]
                 self.itemCount = self.items!.count
+                self.profiles = userName["profiles"] as? [String:Any]
                 for key in self.items!.keys {
                     self.descriptions = self.items![key] as? [String:Any]
                 }
+                // Search for the profile, set allItems to profile->, email->, items(key, value)
+                for (key, value) in self.profiles! {
+                    if (key == self.currentUser) {
+                        var value = value as? [String:Any]
+                        self.allItems[key] = value
+                        let hold = (self.allItems[self.appDelegate.globalEmail] as? [String:Any])!
+                        self.allIDs = hold["items"]! as! [String:Any]
+                        self.ID = Array(self.allIDs.keys)
+                    }
+                }
                 
                 for (key, value) in self.items! {
-                    var values = value as? [String:Any]
-                    let email = values!["email"]
-                    if (email as! String == self.currentUser) {
+                    if let i = self.ID.index(of: key) {
                         self.userItems[key] = value
                     }
                 }
-            // Do any additional setup after loading the view.
+                // Do any additional setup after loading the view.
             }
         })
         tableView.delegate = self
