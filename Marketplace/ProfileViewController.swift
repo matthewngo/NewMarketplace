@@ -31,18 +31,18 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var profileImg: UIImageView!
     
+    @IBOutlet weak var editBtn: UIBarButtonItem!
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.reloadData()
         ref = Database.database().reference()
+        if (self.personInformation == "") {
+            self.currentUser = self.appDelegate.globalEmail
+        } else {
+            self.currentUser = self.personInformation
+        }
         ref?.observeSingleEvent(of: .value, with: { snapshot in
             if !snapshot.exists() { return }
-            
-            if (self.personInformation == "") {
-                self.currentUser = self.appDelegate.globalEmail
-            } else {
-                self.currentUser = self.personInformation
-            }
 
             
             if let userName = snapshot.value as? [String:Any] {
@@ -75,7 +75,8 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
                 }  // Do any additional setup after loading the view.
             }
         })
-        ref?.child("profiles").child(appDelegate.globalEmail).observeSingleEvent(of: .value, with: { (snapshot) in
+        print(self.currentUser)
+        ref?.child("profiles").child(self.currentUser).observeSingleEvent(of: .value, with: { (snapshot) in
             let value = snapshot.value as? NSDictionary
             print(value)
             if snapshot.hasChild("profileURL") && value!["profileURL"] as? String != "" { // set with image user added
@@ -160,19 +161,25 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             let finName = value!["name"] as? String
             let finClassYear = value!["classYear"] as? String
             let finAbout = value!["about"] as? String
-            let finUrl = value!["profileURL"] as? String
-            if finName != "" {
-                self.name.text = finName
-            }
-            if finClassYear != "" {
-                self.classYear.text = finClassYear
-            }
-            if finAbout != "" {
-                self.about.text = finAbout
-            }
-            if finUrl != "" {
+            if snapshot.hasChild("profileURL") && value!["profileURL"] as? String != "" {
+                let finUrl = value!["profileURL"] as? String
                 self.downloadImage(url: finUrl!)
                 self.profileImg.contentMode = .scaleAspectFill
+            }
+            if snapshot.hasChild("name") && finName != "" {
+                self.name.text = finName
+            } else {
+                self.name.text = "Name"
+            }
+            if snapshot.hasChild("classYear") && finClassYear != "" {
+                self.classYear.text = finClassYear
+            } else {
+                self.classYear.text = "Class Year"
+            }
+            if snapshot.hasChild("about") && finAbout != "" {
+                self.about.text = finAbout
+            } else {
+                self.about.text = "About"
             }
         }) { (error) in
             print(error.localizedDescription)

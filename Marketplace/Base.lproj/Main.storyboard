@@ -684,6 +684,7 @@
                     <connections>
                         <outlet property="about" destination="3rr-TI-b5y" id="cFz-XX-qTm"/>
                         <outlet property="classYear" destination="RN3-B4-REl" id="d81-xk-7yL"/>
+                        <outlet property="editBtn" destination="joJ-qZ-5Tm" id="bT0-81-Yx8"/>
                         <outlet property="name" destination="RAX-fA-AaG" id="ilN-cZ-KHu"/>
                         <outlet property="profileImg" destination="YxN-cL-1aO" id="SC8-pK-Rjh"/>
                         <outlet property="tableView" destination="las-lb-iKd" id="SU2-Xz-GWa"/>
