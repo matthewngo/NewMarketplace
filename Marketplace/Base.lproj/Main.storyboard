@@ -63,17 +63,17 @@
             </objects>
             <point key="canvasLocation" x="-1775" y="-356"/>
         </scene>
-        <!--Messages-->
+        <!--Reviews-->
         <scene sceneID="AvW-l3-mwV">
             <objects>
-                <viewController title="Messages" id="T9R-Db-T7s" sceneMemberID="viewController">
+                <viewController title="Reviews" id="T9R-Db-T7s" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Jr2-8l-T3H">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="ppl-QF-7Kw"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Messages" id="SzQ-wD-O5X"/>
+                    <navigationItem key="navigationItem" title="Reviews" id="SzQ-wD-O5X"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HcF-Zv-4iB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -543,11 +543,11 @@
             </objects>
             <point key="canvasLocation" x="54.399999999999999" y="-689.05547226386807"/>
         </scene>
-        <!--Messages Navigation-->
+        <!--Reviews Navigation-->
         <scene sceneID="WVd-zA-78K">
             <objects>
-                <navigationController title="Messages Navigation" automaticallyAdjustsScrollViewInsets="NO" id="1Dr-Ec-mvb" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Messages" image="messages_icon" id="GaM-95-bLV"/>
+                <navigationController title="Reviews Navigation" automaticallyAdjustsScrollViewInsets="NO" id="1Dr-Ec-mvb" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Reviews" image="reviews_icon" id="GaM-95-bLV"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="YdY-cf-eUf">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -886,8 +886,8 @@
         <image name="Image" width="750" height="1334"/>
         <image name="Star - Filled In" width="41" height="40"/>
         <image name="listings_icon" width="15" height="11"/>
-        <image name="messages_icon" width="19" height="17"/>
         <image name="profile_icon" width="14" height="15"/>
+        <image name="reviews_icon" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="8zw-NI-dvg"/>
