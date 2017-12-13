@@ -75,7 +75,9 @@ class AddItemViewController: UITableViewController,UIImagePickerControllerDelega
                 self.currentUser = user!["email"] as! String
             }
         })
-        if titleField.text == "" || price.text == "" || itemCategory == "" {
+        let pattern = "^[1-9][0-9]*(\\.?[0-9][0-9])?$"
+        let match = price.text?.range(of: pattern, options: .regularExpression, range: nil, locale: nil) != nil
+        if titleField.text == "" || price.text == "" || itemCategory == "" || !match {
             print("Working")
         } else {
             complete = true
