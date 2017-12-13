@@ -49,20 +49,25 @@ class ReviewsViewController: UIViewController, UITableViewDelegate, UITableViewD
     func calcAvg() {
         var avg: Double = 0.0
         ref = Database.database().reference().child("profiles")
-        ref = ref?.child(self.seller!).child("reviews")
+        ref = ref?.child(seller!).child("reviews")
         ref?.observeSingleEvent(of: .value, with: { (snapshot) in
             let value = snapshot.value as? NSDictionary
             if (value != nil) {
+                var count = 0
                 for (key, value) in value! {
                     let id = value as! [String:Any]
                     let strRating = id["rating"] as! String
-                    avg += Double(strRating)!
+                    if Double(strRating) != nil {
+                        avg += Double(strRating)!
+                        count += 1
+                    }
                 }
-                avg = avg / Double(value!.count)
+                avg = avg / Double(count)
                 self.avgRating.text = "\(avg)"
                 Database.database().reference().child("profiles").child(self.seller!).child("avgRating").setValue(avg)
             } else {
                 self.avgRating.text = "No Reviews Yet"
+
             }
         }) { (error) in
             //print(error.localizedDescription)

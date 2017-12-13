@@ -89,7 +89,32 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
     
+    func calcAvg() {
+        var avg: Double = 0.0
+        ref = Database.database().reference().child("profiles")
+        ref = ref?.child(sellerText!).child("reviews")
+        ref?.observeSingleEvent(of: .value, with: { (snapshot) in
+            let value = snapshot.value as? NSDictionary
+            if (value != nil) {
+                var count = 0
+                for (key, value) in value! {
+                    let id = value as! [String:Any]
+                    let strRating = id["rating"] as! String
+                    if Double(strRating) != nil {
+                        avg += Double(strRating)!
+                        count += 1
+                    }
+                }
+                avg = avg / Double(count)
+                Database.database().reference().child("profiles").child(self.sellerText!).child("avgRating").setValue(avg)
+            }
+        }) { (error) in
+            //print(error.localizedDescription)
+        }
+    }
+    
     func getRating() {
+        calcAvg()
        ref = Database.database().reference()
         ref?.child("profiles").child(sellerText!).observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
