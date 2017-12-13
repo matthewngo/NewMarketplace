@@ -17,6 +17,7 @@ class ReviewSellerTableViewController: UITableViewController {
     @IBOutlet weak var itemField: UITextField!
     @IBOutlet weak var ratingField: UITextField!
     @IBOutlet weak var commentField: UITextField!
+    var complete: Bool?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,6 +52,7 @@ class ReviewSellerTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (self.appDelegate.globalEmail != self.seller) {
             if (segue.identifier == "returnProfileSegue") {
+                
                 ref = Database.database().reference().child("profiles")
                 ref = ref?.child(self.seller!)
                 ref?.observeSingleEvent(of: .value, with: { (snapshot) in
@@ -58,6 +60,7 @@ class ReviewSellerTableViewController: UITableViewController {
                     let reviewsRef = self.ref?.child("reviews")
                     let reviewRef = reviewsRef?.childByAutoId()
                     let rating = self.ratingField.text
+                    
                     reviewRef?.child("rating").setValue(rating)
                     let comment = self.commentField.text
                     reviewRef?.child("comment").setValue(comment)
@@ -72,6 +75,9 @@ class ReviewSellerTableViewController: UITableViewController {
         } else {
             print("You can't review yourself")
         }
+    }
+    func isStringAnInt(string: String) -> Bool {
+        return Int(string) != nil
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

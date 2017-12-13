@@ -67,7 +67,7 @@ class ListingsViewController: UIViewController, UITableViewDelegate, UITableView
             newFilters.append("Books")
         }
         if clothesFilter {
-            newFilters.append("Clothes")
+            newFilters.append("Clothing")
         }
         if furnFilter {
             newFilters.append("Furniture")
@@ -134,11 +134,11 @@ class ListingsViewController: UIViewController, UITableViewDelegate, UITableView
                                 self.userItems[key] = value
                             }
                         }
-                }
+                
                     self.items = self.userItems
                     self.itemCount = self.items!.count
                     print("the filtered items are: \(String(describing: self.items))")
-                    
+                    }
                 }
             }
             
