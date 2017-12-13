@@ -111,27 +111,30 @@ class ListingsViewController: UIViewController, UITableViewDelegate, UITableView
                 //                        self.descriptions = self.items![key] as? [String:Any]
                 //                    }
                 //                }
-                if (self.activeFilters.count == 0) {
-                    self.itemCount = self.items!.count
-                    for key in self.items!.keys {
-                        self.descriptions = self.items![key] as? [String:Any]
-                    }
-                    //print(self.items)
-                    print("no filter")
+                if (self.items == nil) {
+                    self.itemCount = 0
                 } else {
-                    self.items = userName["items"] as? [String: Any]
-                    self.userItems.removeAll()
-                    // Looping through all the items
-                    for (key, value) in self.items! {
-                        let category = value as? [String:Any]
-                        let c = category!["category"]
-                        // Checks if the item contains the category in the activeFilters
-                        if let i = self.activeFilters.index(of: c as! String) {
-                            // appends them to user items
-                            self.userItems[key] = value
+                    if (self.activeFilters.count == 0) {
+                        self.itemCount = self.items!.count
+                        for key in self.items!.keys {
+                            self.descriptions = self.items![key] as? [String:Any]
                         }
-                    }
-                    
+                        //print(self.items)
+                        print("no filter")
+                    } else {
+                        self.items = userName["items"] as? [String: Any]
+                        self.userItems.removeAll()
+                        // Looping through all the items
+                        for (key, value) in self.items! {
+                            let category = value as? [String:Any]
+                            let c = category!["category"]
+                            // Checks if the item contains the category in the activeFilters
+                            if let i = self.activeFilters.index(of: c as! String) {
+                                // appends them to user items
+                                self.userItems[key] = value
+                            }
+                        }
+                }
                     self.items = self.userItems
                     self.itemCount = self.items!.count
                     print("the filtered items are: \(String(describing: self.items))")

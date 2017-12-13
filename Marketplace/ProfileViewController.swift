@@ -210,7 +210,26 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             controller.seller = self.personInformation
         }
     }
-   
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return (self.personInformation == "" || self.personInformation == self.appDelegate.globalEmail)
+        
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.delete {
+            let singleItem = self.ID[indexPath.row]
+            // Remove node from the items in Firebase
+            ref = Database.database().reference()
+            ref?.child("profiles").child(self.appDelegate.globalEmail).child("items").child(singleItem).removeValue()
+            // Remove node from profile -> items -> the item
+            ref?.child("items").child(singleItem).removeValue()
+            self.userItems.removeValue(forKey: singleItem) as! [String:Any]
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            self.tableView.reloadData()
+        }
+        self.tableView.reloadData()
+        self.viewDidLoad()
+    }
     
  
     
