@@ -156,7 +156,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     @IBAction func unwindToProfile(segue:UIStoryboardSegue) {
         NSLog("Profile")
-        ref?.child("profiles").child(appDelegate.globalEmail).observeSingleEvent(of: .value, with: { (snapshot) in
+        ref?.child("profiles").child(currentUser).observeSingleEvent(of: .value, with: { (snapshot) in
             let value = snapshot.value as? NSDictionary
             let finName = value!["name"] as? String
             let finClassYear = value!["classYear"] as? String
