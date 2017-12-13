@@ -61,6 +61,8 @@ class ReviewsViewController: UIViewController, UITableViewDelegate, UITableViewD
                 avg = avg / Double(value!.count)
                 self.avgRating.text = "\(avg)"
                 Database.database().reference().child("profiles").child(self.seller!).child("avgRating").setValue(avg)
+            } else {
+                self.avgRating.text = "No Reviews Yet"
             }
         }) { (error) in
             //print(error.localizedDescription)
