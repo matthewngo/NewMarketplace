@@ -42,9 +42,14 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         if (self.personInformation == "" || self.personInformation == self.appDelegate.globalEmail) {
             self.reviewButton.isHidden = true
             self.currentUser = self.appDelegate.globalEmail
+            self.navigationItem.rightBarButtonItem?.isEnabled = true
+            self.navigationItem.rightBarButtonItem?.tintColor = UIColor.white
         } else {
             self.reviewButton.isHidden = false
             self.currentUser = self.personInformation
+            self.navigationItem.rightBarButtonItem?.isEnabled = false
+            self.navigationItem.rightBarButtonItem?.tintColor = UIColor.clear
+            
         }
         ref?.observeSingleEvent(of: .value, with: { snapshot in
             if !snapshot.exists() { return }
